@@ -127,11 +127,11 @@ const resolvers = {
             const { name, mail } = args;
 
             if (authorsData.some(obj => obj.mail === mail)) {
-                throw new Error('User email' + mail + 'already in use');
+                throw new Error('El email de usuario: ' + mail + ' ya existe');
             }
 
             if (authorsData.some(obj => obj.name === name)) {
-                throw new Error('User name' + name + 'already in use');
+                throw new Error('El nombre de usuario: ' + name + ' ya existe');
             }
 
             const author = {
@@ -156,7 +156,7 @@ const resolvers = {
                 return ingredient;
 
             } else {
-                throw new Error('Title: ' + recipe + 'dont exist');
+                throw new Error('El ingrediente con nombre: ' + recipe + 'no existe');
             }
         },
 
@@ -165,11 +165,11 @@ const resolvers = {
             const { title, description, author, ingredients } = args;
 
             if (recipesData.some(obj => obj.title === title)) {
-                throw new Error('Recipe: ' + title + 'already in use');
+                throw new Error('La receta: ' + title + 'ya existe');
             }
 
             if (!authorsData.some(obj => obj.name === author)) {
-                throw new Error('Author: ' + author + 'doesnt exist');
+                throw new Error('El autor: ' + author + 'no existe');
             }
 
             const date = new Date().getDate();
@@ -222,9 +222,9 @@ const resolvers = {
                         }
                     }
                 }
-                return ("Eliminado con Exito");
+                return ("Autor eliminado con éxito");
             } else {
-                return ("No existe");
+                return ("El autor introducido no existe");
             }
 
         },
@@ -239,9 +239,9 @@ const resolvers = {
                         i--;
                     }
                 }
-                return ("Eliminado con Exito");
+                return ("Ingrediente eliminado con éxito");
             } else {
-                return ("No existe");
+                return ("El ingrediente introducido no existe");
             }
 
 
@@ -264,9 +264,9 @@ const resolvers = {
                         i--;
                     }
                 }
-                return ("Eliminado con Exito");
+                return ("Receta eliminada con éxito");
             } else {
-                return ("No existe");
+                return ("La receta introducida no existe");
             }
 
         },
